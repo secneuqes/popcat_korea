@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "팝캣 코리아",
+    "version": "0.1.0",
+    "description": "대한민국을 위한 팝캣 매크로입니다.",
+    "action": {
+        "default_icon": {
+          "128": "images/128.png"
+        },
+        "default_title": "팝캣 코리아"
+      },
+    "content_scripts": [
+        {
+            "matches": ["https://popcat.click/"],
+            "js": ["index.js"]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "background"
+    ]
+}
