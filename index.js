@@ -2,14 +2,11 @@ var modal_flag = true;
 var total_count = 0;
 var prepps = 0;
 var nowpps = 0;
-var pps = null;
-var intervpopcat = null;
 var active = false;
+var pps=null;
+var intervpopcat=null;
 
-head = document.head || document.getElementsByTagName('head')[0]
-btn_src = document.createElement('script')
-btn_src.src='https://buttons.github.io/buttons.js'
-btn_src.type='module'
+var head = document.head || document.getElementsByTagName('head')[0];
 
 var kevent = new KeyboardEvent('keydown', {
     key: 'g'
@@ -44,6 +41,7 @@ document.body.onkeyup = function(e) {
             document.getElementById('close').onclick = function () {
                 modal.remove();
                 document.getElementById('css-src').remove();
+                start();
             }
         }
     }
@@ -84,7 +82,7 @@ var start = function() {
         }
     }, 1000)
     intervpopcat = setInterval(function() {
-        for (i = 0; i < 77; i++) {
+        for (i = 0; i < 127; i++) {
             document.dispatchEvent(kevent);
             total_count++;
         }
@@ -92,6 +90,13 @@ var start = function() {
 }
 
 var create_modal = function () {
+    btn_src = document.createElement('script');
+    btn_src.setAttribute('defer','');
+    btn_src.setAttribute('async','');
+    btn_src.type = 'module';
+    btn_src.src='https://buttons.github.io/buttons.js?r='+Math.random().toString();
+    document.body.appendChild(btn_src);
+    modal=document.createElement('div')
     let css = `
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -145,7 +150,7 @@ var create_modal = function () {
         text-shadow: 1px 1px 2px gray;
         color: white;
     }
-    
+
     #modal .content {
         margin-top: 20px;
         padding: 0px 10px;
@@ -163,7 +168,6 @@ var create_modal = function () {
     } else {
     style.appendChild(document.createTextNode(css));
     }
-    modal=document.createElement('div');
     modal.id='modal'
     modal.className='modal-overlay'
 
@@ -197,12 +201,11 @@ var create_modal = function () {
     modal_img.setAttribute("height", "42")
     modal_img.setAttribute("width", "120")
     modal_img.setAttribute("alt", "donaricano-btn")
-    modal_content_DONATELINK.appendChild(modal_img)   
+    modal_content_DONATELINK.appendChild(modal_img)
     modal_content.appendChild(modal_content_text1)
     modal_content.appendChild(modal_content_DONATELINK)
     modal_window.appendChild(modal_content)
     modal.appendChild(modal_window)
-    modal.appendChild(btn_src)
     document.body.appendChild(modal)
     return modal;
 }
