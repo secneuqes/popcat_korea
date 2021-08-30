@@ -1,9 +1,15 @@
+var modal_flag = true;
 var total_count = 0;
 var prepps = 0;
 var nowpps = 0;
 var pps = null;
 var intervpopcat = null;
 var active = false;
+
+head = document.head || document.getElementsByTagName('head')[0]
+btn_src = document.createElement('script')
+btn_src.src='https://buttons.github.io/buttons.js'
+btn_src.type='module'
 
 var kevent = new KeyboardEvent('keydown', {
     key: 'g'
@@ -25,6 +31,21 @@ window.onload = function() {
 document.body.onkeyup = function(e) {
     if (e.keyCode == 32) {
         if (active) {stop();} else {start();}
+    } else if(e.keyCode == 73){
+        stop();
+        if (modal_flag) {
+            modal_flag = false;
+            modal.remove();
+            if(!!document.getElementById('css-src')) document.getElementById('css-src').remove();
+            start();
+        } else {
+            modal_flag = true;
+            let modal=create_modal();
+            document.getElementById('close').onclick = function () {
+                modal.remove();
+                document.getElementById('css-src').remove();
+            }
+        }
     }
 }
 
@@ -46,14 +67,14 @@ var start = function() {
     xmlhttp.open("GET", "https://popcat.click/cdn-cgi/trace", true);
     xmlhttp.send();
     pps = setInterval(function() {
-        prepps = nowpps;
-        nowpps = total_count;
-        //console.log('%c' + (nowpps + ' PPS') + '%c / ' + '%c' + (nowpps - prepps + ' dPPS'), 'color: green; font-size: 24px; background: #191919;', 'color: white; font-size: 24px; background: #191919;', 'color: ' + ['red', 'yellow', 'yellow'][1 + Math.sign(nowpps - prepps)] + '; font-size: 24px; background: #191919;');
-        total_count = 0;
-        if (nowpps <= 1616) {
-            location.replace("https://popcat.click/#");
-            location.reload();
-        }
+        // prepps = nowpps;
+        // nowpps = total_count;
+        // console.log('%c' + (nowpps + ' PPS') + '%c / ' + '%c' + (nowpps - prepps + ' dPPS'), 'color: green; font-size: 24px; background: #191919;', 'color: white; font-size: 24px; background: #191919;', 'color: ' + ['red', 'yellow', 'yellow'][1 + Math.sign(nowpps - prepps)] + '; font-size: 24px; background: #191919;');
+        // total_count = 0;
+        // if (nowpps <= 1000) {
+        //     location.replace("https://popcat.click/#");
+        //     location.reload();
+        // }
         if (checkCookie("bot")) {
             let date = new Date();
             date.setDate(date.getDate() - 100);
@@ -63,10 +84,10 @@ var start = function() {
         }
     }, 1000)
     intervpopcat = setInterval(function() {
-        for (i = 0; i < 777; i++) {
+        for (i = 0; i < 77; i++) {
             document.dispatchEvent(kevent);
+            total_count++;
         }
-        total_count+=777;
     }, 0);
 }
 
@@ -131,7 +152,6 @@ var create_modal = function () {
         text-shadow: 1px 1px 2px gray;
         color: white;
     }`
-    head = document.head || document.getElementsByTagName('head')[0],
     style = document.createElement('style');
     style.id='css-src'
 
@@ -166,11 +186,12 @@ var create_modal = function () {
     modal_content=document.createElement('div')
     modal_content.className='content'
     modal_content_text1=document.createElement('p')
-    modal_content_text1.innerText=`⚠️ [주의사항] ⚠️\n\n📌 이용 중 팝캣 화면 클릭을 자제해주세요!\n📌 실행 중 페이지가 자주 새로고침 될 수 있습니다!\n📌 동시에 다른 작업을 컴퓨터로 할 경우 일시적 성능 저하가 일어날 수 있습니다!\n📌 이용 중에 한국이 아닌 타국 vpn 접속시 타국 ip 감지로 인해 자동 중지됩니다!\n\nℹ️ [사용방법] ℹ️\n\n📌해당 프로그램은 사이트 접속시 자동으로 실행됩니다.\n📌이용 중 잠시 중단 하기 위해서는 SPACE바를 이용해주세요!\n\n📢 소리를 끄고 실행해주세요 📢\n\n💻 [개발자] 💻\n\nkingsparkdev / franknoh\n\n📢 후원 : `
+    modal_content_text1.innerHTML=`⚠️ [주의사항] ⚠️</br></br>📌 이용 중 팝캣 화면 클릭을 자제해주세요!</br>📌 실행 중 페이지가 자주 새로고침 될 수 있습니다!</br>📌 동시에 다른 작업을 컴퓨터로 할 경우 일시적 성능 저하가 일어날 수 있습니다!</br>📌 이용 중에 한국이 아닌 타국 vpn 접속시 타국 ip 감지로 인해 자동 중지됩니다!</br></br>ℹ️ [사용방법] ℹ️</br></br>📌해당 프로그램은 사이트 접속시 자동으로 실행됩니다.</br>📌이용 중 잠시 중단 하기 위해서는 SPACE바를 이용해주세요!</br></br>📢 소리를 끄고 실행해주세요 📢</br></br>💻 [개발자] 💻</br></br><a class="github-button" href="https://github.com/kingsparkdev" aria-label="Follow @kingsparkdev on GitHub">Follow @kingsparkdev</a> / <a class="github-button" href="https://github.com/franknoh" aria-label="Follow @franknoh on GitHub">Follow @franknoh</a></br></br>📢 후원 : `
+    
+    
     modal_content_DONATELINK=document.createElement('a')
     modal_content_DONATELINK.target = "_blank";
     modal_content_DONATELINK.href = "https://donaricano.com/mypage/1876797423__Cc9HE";
-    // modal_content_DONATELINK.innerText = "후원하기"
     modal_img = document.createElement('img');
     modal_img.setAttribute("src", "https://d1u4yishnma8v5.cloudfront.net/donarincano_gift.png")
     modal_img.setAttribute("height", "42")
@@ -181,7 +202,7 @@ var create_modal = function () {
     modal_content.appendChild(modal_content_DONATELINK)
     modal_window.appendChild(modal_content)
     modal.appendChild(modal_window)
-
+    modal.appendChild(btn_src)
     document.body.appendChild(modal)
     return modal;
 }
