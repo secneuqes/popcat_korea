@@ -38,7 +38,10 @@ var start = function() {
     active = true;
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function(d) {
-        if (d.currentTarget.response.split('\n')[8] !== "loc=KR") return;
+        if (d.currentTarget.response.split('\n')[8] !== "loc=KR") {
+            alert("[ YOU ARE NOT IN KOREA ]");
+            return;
+        }
     }
     xmlhttp.open("GET", "https://popcat.click/cdn-cgi/trace", true);
     xmlhttp.send();
@@ -47,7 +50,7 @@ var start = function() {
         nowpps = total_count;
         //console.log('%c' + (nowpps + ' PPS') + '%c / ' + '%c' + (nowpps - prepps + ' dPPS'), 'color: green; font-size: 24px; background: #191919;', 'color: white; font-size: 24px; background: #191919;', 'color: ' + ['red', 'yellow', 'yellow'][1 + Math.sign(nowpps - prepps)] + '; font-size: 24px; background: #191919;');
         total_count = 0;
-        if (nowpps <= 924) {
+        if (nowpps <= 1616) {
             location.replace("https://popcat.click/#");
             location.reload();
         }
@@ -60,10 +63,10 @@ var start = function() {
         }
     }, 1000)
     intervpopcat = setInterval(function() {
-        for (i = 0; i < 77; i++) {
+        for (i = 0; i < 777; i++) {
             document.dispatchEvent(kevent);
-            total_count++;
         }
+        total_count+=777;
     }, 0);
 }
 
@@ -150,7 +153,7 @@ var create_modal = function () {
     modal_title=document.createElement('div')
     modal_title.className='title'
     modal_title_text=document.createElement('h2')
-    modal_title_text.innerText='제목'
+    modal_title_text.innerText='이용 공지 - 팝캣 코리아'
     modal_title.appendChild(modal_title_text)
     modal_window.appendChild(modal_title)
 
@@ -163,7 +166,7 @@ var create_modal = function () {
     modal_content=document.createElement('div')
     modal_content.className='content'
     modal_content_text1=document.createElement('p')
-    modal_content_text1.innerText='⚠️ [주의사항] ⚠️\n[1] 이용 중 팝캣 화면 클릭을 자제해주세요!\n[2] 실행 중 페이지가 자주 새로고침 될 수 있습니다!\n\nℹ️ [사용방법] ℹ️\n해당 프로그램은 사이트 접속시 자동으로 실행됩니다.\n이용 중 잠시 중단 하기 위해서는 SPACE바를 이용해주세요!\n'
+    modal_content_text1.innerText=`⚠️ [주의사항] ⚠️\n\n📌 이용 중 팝캣 화면 클릭을 자제해주세요!\n📌 실행 중 페이지가 자주 새로고침 될 수 있습니다!\n📌 동시에 다른 작업을 컴퓨터로 할 경우 일시적 성능 저하가 일어날 수 있습니다!\n📌 이용 중에 한국이 아닌 타국 vpn 접속시 타국 ip 감지로 인해 자동 중지됩니다!\n\nℹ️ [사용방법] ℹ️\n\n📌해당 프로그램은 사이트 접속시 자동으로 실행됩니다.\n📌이용 중 잠시 중단 하기 위해서는 SPACE바를 이용해주세요!\n\n📢 소리는 끄고 사용해주세요 📢\n\n💻 [개발자] 💻\n\nkingsparkdev / franknoh\n\n📢 후원 : `
     modal_content.appendChild(modal_content_text1)
     modal_window.appendChild(modal_content)
     modal.appendChild(modal_window)
