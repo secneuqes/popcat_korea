@@ -190,7 +190,7 @@ var create_modal = function () {
     modal_content=document.createElement('div')
     modal_content.className='content'
     modal_content_text1=document.createElement('p')
-    modal_content_text1.innerHTML=`⚠️ [주의사항] ⚠️</br></br>📌 이용 중 팝캣 화면 클릭을 자제해주세요!</br>📌 실행 중 페이지가 자주 새로고침 될 수 있습니다!</br>📌 동시에 다른 작업을 컴퓨터로 할 경우 일시적 성능 저하가 일어날 수 있습니다!</br>📌 이용 중에 한국이 아닌 타국 vpn 접속시 타국 ip 감지로 인해 자동 중지됩니다!</br></br>ℹ️ [사용방법] ℹ️</br></br>📌해당 프로그램은 사이트 접속시 자동으로 실행됩니다.</br>📌이용 중 잠시 중단 하기 위해서는 SPACE바를 이용해주세요!</br></br>📢 소리를 끄고 실행해주세요 📢</br></br>💻 [개발자] 💻</br></br><a class="github-button" href="https://github.com/kingsparkdev" aria-label="Follow @kingsparkdev on GitHub">Follow @kingsparkdev</a> / <a class="github-button" href="https://github.com/franknoh" aria-label="Follow @franknoh on GitHub">Follow @franknoh</a></br></br>📢 후원 : `
+    modal_content_text1.innerHTML=`⚠️ [주의사항] ⚠️</br></br>📌 이용 중 팝캣 화면 클릭을 자제해주세요!</br>📌 실행 중 페이지가 자주 새로고침 될 수 있습니다!</br>📌 동시에 다른 작업을 컴퓨터로 할 경우 일시적 성능 저하가 일어날 수 있습니다!</br>📌 " i " 키를 눌러 설명창을 열고 닫을 수 있습니다!</br></br>ℹ️ [사용방법] ℹ️</br></br>📌해당 프로그램은 사이트 접속시 자동으로 실행됩니다.</br>📌이용 중 잠시 중단 하기 위해서는 SPACE바를 이용해주세요!</br></br>📢 소리를 끄고 실행해주세요 📢</br></br>💻 [개발자] 💻</br></br><a class="github-button" href="https://github.com/kingsparkdev" aria-label="Follow @kingsparkdev on GitHub">Follow @kingsparkdev</a> / <a class="github-button" href="https://github.com/franknoh" aria-label="Follow @franknoh on GitHub">Follow @franknoh</a></br></br>📢 후원 : `
     
     
     modal_content_DONATELINK=document.createElement('a')
