@@ -41,6 +41,7 @@ document.body.onkeyup = function(e) {
             document.getElementById('close').onclick = function () {
                 modal.remove();
                 document.getElementById('css-src').remove();
+                modal_flag = false;
                 start();
             }
         }
