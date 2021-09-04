@@ -59,7 +59,9 @@ var start = function() {
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function(d) {
         if (d.currentTarget.response.split('\n')[8] !== "loc=KR") {
+            stop();
             alert("[ YOU ARE NOT IN KOREA ]");
+            window.location.replace("http://pop-cat.kro.kr");
             return;
         }
     }
